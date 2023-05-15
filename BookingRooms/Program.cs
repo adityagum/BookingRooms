@@ -125,7 +125,7 @@ public class Program
                         {
                             Console.WriteLine("Id: " + result.Id);
                             Console.WriteLine("Name: " + result.Name);
-                            Console.WriteLine("------------------------------------ /n");
+                            Console.WriteLine("------------------------------------");
                         }
                     }
 
@@ -140,7 +140,7 @@ public class Program
                             Console.WriteLine("Degree: " + result.Degree);
                             Console.WriteLine("GPA: " + result.Gpa);
                             Console.WriteLine("Universty Id : " + result.UniversityId);
-                            Console.WriteLine("----------------------------------------- /n");
+                            Console.WriteLine("-----------------------------------------");
                         }
 
                     }
@@ -155,7 +155,7 @@ public class Program
                             Console.WriteLine("Nik: " + result.Nik);
                             Console.WriteLine("FirstName: " + result.FirstName);
                             Console.WriteLine("LastName: " + result.LastName);
-                            Console.WriteLine("BirthDate: " + result.BirthDate);
+                            Console.WriteLine("BirthDate: " + result.Birthdate);
                             Console.WriteLine("Gender: " + result.Gender);
                             Console.WriteLine("HiringDate: " + result.HiringDate);
                             Console.WriteLine("Email: " + result.Email);
@@ -219,7 +219,7 @@ public class Program
                     else if (tabel3 == 2)
                     {
                         var education1 = new Educations();
-                        Console.Write("Masukkan ID : ");
+                        Console.Write("Masukkan Education ID : ");
                         int id = Convert.ToInt32(Console.ReadLine());
                         Console.Write("Major: ");
                         string major = Console.ReadLine();
@@ -265,7 +265,7 @@ public class Program
                     if (tabel4 == 1)
                     {
                         var university2 = new Universities();
-                        Console.Write("Masukkan ID : ");
+                        Console.Write("Masukkan ID Universities : ");
                         int id = Convert.ToInt32(Console.ReadLine());
                         university2.Id = id;
 
@@ -283,7 +283,7 @@ public class Program
                     else if (tabel4 == 2)
                     {
                         var education2 = new Educations();
-                        Console.Write("Masukkan ID : ");
+                        Console.Write("Masukkan ID Educations : ");
                         int id = Convert.ToInt32(Console.ReadLine());
                         education2.Id = id;
 

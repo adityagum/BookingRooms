@@ -13,7 +13,7 @@ public class Employees
     private static readonly string connectionString =
      "Data Source=ASUSVIVOBOOK\\SQLSERVER;Database=booking_rooms;Integrated Security=True;Connect Timeout=30;Encrypt=False;";
 
-    public int Id { get; set; }
+    public string Id { get; set; }
     public string Nik { get; set; }
     public string FirstName { get; set; }
     public string LastName { get; set; }
@@ -22,7 +22,7 @@ public class Employees
     public DateTime HiringDate { get; set; }
     public string Email { get; set; }
     public string PhoneNumber { get; set; }
-    public int DepartmentId { get; set; }
+    public string DepartmentId { get; set; }
 
     /* CREATE */
     public static int InsertEmployee(Employees employees)
@@ -196,7 +196,7 @@ public class Employees
         employee.PhoneNumber = Console.ReadLine();
 
         Console.Write("Department ID : ");
-        employee.DepartmentId = Convert.ToInt32(Console.ReadLine());
+        employee.DepartmentId = Console.ReadLine();
 
 
 
@@ -260,12 +260,12 @@ public class Employees
                     emplo.Nik = reader.GetString(1);
                     emplo.FirstName = reader.GetString(2);
                     emplo.LastName = reader.GetString(3);
-                    emplo.BirthDate = reader.GetDateTime(4);
+                    emplo.Birthdate = reader.GetDateTime(4);
                     emplo.Gender = reader.GetString(5);
                     emplo.HiringDate = reader.GetDateTime(6);
                     emplo.Email = reader.GetString(7);
                     emplo.PhoneNumber = reader.GetString(8);
-                    emplo.DepartementId = reader.GetString(9);
+                    emplo.DepartmentId = reader.GetString(9);
 
                     emp.Add(emplo);
                 }
