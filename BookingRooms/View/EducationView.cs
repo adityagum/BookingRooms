@@ -9,9 +9,6 @@ namespace BookingRooms.VIew
 {
     public class EducationView
     {
-        /*Console.WriteLine("Menampilkan semua data");
-        var results = Education.GetEducation();
-        foreach (var result in results)*/
         public void Output(Education education)
         {
             Console.WriteLine("Id: " + education.Id);

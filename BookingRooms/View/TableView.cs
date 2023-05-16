@@ -41,6 +41,34 @@ namespace BookingRooms.View
                     EducationController.Insert(education);
                     break;
 
+                case 3:
+                    Console.WriteLine("-----------------------------------------");
+                    var employee = new Employee();
+                    Console.Write("Nik: ");
+                    employee.Nik = Console.ReadLine();
+                    Console.Write("FirstName: ");
+                    employee.FirstName = Console.ReadLine();
+                    Console.Write("LastName: ");
+                    employee.LastName = Console.ReadLine();
+                    Console.Write("BirthDate: ");
+                    employee.Birthdate = DateTime.Parse(Console.ReadLine());
+                    Console.Write("Gender: ");
+                    employee.Gender = Console.ReadLine();
+                    Console.Write("HiringDate: ");
+                    employee.HiringDate = DateTime.Parse(Console.ReadLine());
+                    Console.Write("Email: ");
+                    employee.Email = Console.ReadLine();
+                    Console.Write("PhoneNumber: ");
+                    employee.PhoneNumber = Console.ReadLine();
+                    Console.Write("DepartementId: ");
+                    employee.DepartmentId = Console.ReadLine();
+
+                    EmployeeController.Insert(employee);
+                    Console.Write("-----------------------------------");
+                    Console.Write("");
+                    break;
+
+
                 default:
                     Console.WriteLine("Invalid Input");
                     break;
@@ -52,18 +80,18 @@ namespace BookingRooms.View
             switch (tabel2)
             {
                 case 1:
-                    UniversityController.GetAll();
+                    UniversityController.GetAllUniv();
                     break;
 
                 case 2:
-                    EducationController.GetAll();
+                    EducationController.GetAllEd();
                     break;
 
                 case 3:
-                    EmployeeController.GetAll();
+                    EmployeeController.GetAllEmp();
                     break;
                 case 4:
-                    ProfillingController.GetAll();
+                    ProfillingController.GetAllProf();
                     break;
 
                 default:

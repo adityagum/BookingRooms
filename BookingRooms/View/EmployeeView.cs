@@ -38,9 +38,5 @@ namespace BookingRooms.VIew
         {
             Console.WriteLine(message);
         }
-
-        /*public void OutputAll(Employee employee)
-        {
-        }*/
     }
 }

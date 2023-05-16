@@ -13,14 +13,13 @@ public class ProfillingController
 {
     private static Profilling _profilling = new Profilling();
 
-    public static void GetAll()
+    public static void GetAllProf()
     {
-        Console.WriteLine("Menampilkan semua data");
         var result = _profilling.Get();
         var view = new ProfillingsView();
         if (result.Count == 0)
         {
-            view.Output("Data Hilang");
+            view.Output("Data Not Found");
         }
         else
         {

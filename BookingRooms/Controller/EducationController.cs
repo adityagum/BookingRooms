@@ -12,14 +12,14 @@ public class EducationController
 {
     private static Education _education = new Education();
 
-    public static void GetAll()
+
+    public static void GetAllEd()
     {
-        Console.WriteLine("Menampilkan semua data");
         var results = _education.Get();
         var view = new EducationView();
         if (results.Count == 0)
         {
-            view.Output("Data Hilang");
+            view.Output("Data Not Found");
         }
         else
         {
@@ -29,7 +29,7 @@ public class EducationController
 
     public static void Insert(Education education)
     {
-        var results = _education.Update(education);
+        var results = _education.Insert(education);
         var view = new EducationView();
         if (results > 0)
         {
@@ -67,21 +67,6 @@ public class EducationController
         else
         {
             Console.WriteLine("Delete Failed");
-        }
-    }
-
-    public static void LinqGender()
-    {
-        var educ = _education.Get();
-        var gen = educ.Where(e => e.Degree == "S2");
-        var view = new EducationView();
-        if (educ.Count == 0)
-        {
-            view.Output("Data Tidak Ditemukan");
-        }
-        else
-        {
-            view.Output(educ);
         }
     }
 

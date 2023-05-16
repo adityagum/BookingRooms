@@ -19,7 +19,8 @@ namespace BookingRooms.View
             Console.WriteLine("|        4. Delete         |");
             Console.WriteLine("|        5. Show Male      |");
             Console.WriteLine("|        6. LINQ           |");
-            Console.WriteLine("|        7. Exit           |");
+            Console.WriteLine("|        7. Insert All     |");
+            Console.WriteLine("|        8. Exit           |");
             Console.WriteLine("----------------------------");
             Console.WriteLine("Choose Menu: ");
         }
@@ -32,7 +33,6 @@ namespace BookingRooms.View
             Console.WriteLine("|      1. University        |");
             Console.WriteLine("|      2. Education         |");
             Console.WriteLine("|      3. Employee          |");
-            Console.WriteLine("|      4. Back to Menu      |");
             Console.WriteLine("-----------------------------");
             Console.WriteLine("Pilih menu: ");
         }
@@ -46,7 +46,6 @@ namespace BookingRooms.View
             Console.WriteLine("|      2. Education         |");
             Console.WriteLine("|      3. Employee          |");
             Console.WriteLine("|      4. Profillings       |");
-            Console.WriteLine("|      5. Back to Menu      |");
             Console.WriteLine("-----------------------------");
             Console.WriteLine("Pilih menu: ");
 
@@ -59,7 +58,6 @@ namespace BookingRooms.View
             Console.WriteLine("-----------------------------");
             Console.WriteLine("|      1. University        |");
             Console.WriteLine("|      2. Education         |");
-            Console.WriteLine("|      3. Back              |");
             Console.WriteLine("-----------------------------");
             Console.WriteLine("Pilih menu: ");
         }
@@ -71,7 +69,6 @@ namespace BookingRooms.View
             Console.WriteLine("-----------------------------");
             Console.WriteLine("|      1. University        |");
             Console.WriteLine("|      2. Education         |");
-            Console.WriteLine("|      3. Back              |");
             Console.WriteLine("-----------------------------");
             Console.WriteLine("Pilih menu: ");
         }

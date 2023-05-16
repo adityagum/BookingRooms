@@ -28,14 +28,5 @@ namespace BookingRooms.VIew
         {
             Console.WriteLine(message);
         }
-
-        /*public void Insert(University university)
-        {
-            Console.WriteLine("-----------------------------------------");
-            var insertuniv = new University();
-            Console.Write("Masukkan nama : ");
-            string nama = Console.ReadLine();
-            university.Name = nama;
-        }*/
     }
 }
