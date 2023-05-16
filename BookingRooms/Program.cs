@@ -19,7 +19,8 @@ public class Program
         Console.WriteLine("=        2. Read            =");
         Console.WriteLine("=        3. Update          =");
         Console.WriteLine("=        4. Delete          =");
-        Console.WriteLine("=        5. Exit            =");
+        Console.WriteLine("=        5. Testing         =");
+        Console.WriteLine("=        6. LINQ            =");
         Console.WriteLine("=                           =");
         Console.WriteLine("=============================");
         Console.WriteLine("Pilih menu (1/2/3/4/5): ");
@@ -27,6 +28,7 @@ public class Program
 
     public static void Main()
     {
+
         int choice;
         do
         {
@@ -41,6 +43,7 @@ public class Program
                     Console.WriteLine("=====      2. Educations                =====");
                     Console.WriteLine("=====      3. Employees (Insert All)    =====");
                     Console.WriteLine("=====      4. Back                      =====");
+                    Console.WriteLine("=====      5. Testing                   =====");
                     Console.WriteLine("=====                                   =====");
                     Console.WriteLine("Pilih menu (1/2/3/4): ");
 
@@ -115,7 +118,7 @@ public class Program
                     Console.WriteLine("=====        5. Back                    =====");
                     Console.WriteLine("=====                                   =====");
                     Console.WriteLine("Pilih menu (1/2/3/4/5): ");
-                    
+
                     int tabel2 = Convert.ToInt32(Console.ReadLine());
                     if (tabel2 == 1)
                     {
@@ -179,7 +182,7 @@ public class Program
                         }
                     }
 
-                    else if (tabel2 == 5) 
+                    else if (tabel2 == 5)
                     {
                         Menu();
                         choice = Convert.ToInt32(Console.ReadLine());
@@ -303,6 +306,64 @@ public class Program
                         Menu();
                         choice = Convert.ToInt32(Console.ReadLine());
                     }
+            
+                    break;
+
+                case 5:
+                    var employ = Employees.GetEmployees();
+                    var gen = employ.Where(e => e.Gender == "male");
+
+                    foreach (var item in gen)
+                    {
+                        Console.WriteLine("Id: " + item.Id);
+                        Console.WriteLine("First Name: " + item.FirstName);
+                        Console.WriteLine("Email: " + item.Email );
+                        Console.WriteLine("");
+                    }
+
+                    break;
+                
+                case 6:
+                    var employee_ = Employees.GetEmployees();
+                    var profillings_ = Profillings.GetProfilings();
+                    var educations_ = Educations.GetEducation();
+                    var universities_ = Universities.GetUniv();
+
+                    var query = from emp in employee_
+                                join prof in profillings_ on emp.Id equals prof.EmployeeId
+                                join edu in educations_ on prof.EducationId equals edu.Id
+                                join uni in universities_ on prof.EducationId equals uni.Id
+                                select new
+                                {
+                                    emp.Nik,
+                                    FullName = emp.FirstName + " " + emp.LastName,
+                                    emp.Birthdate,
+                                    emp.Gender,
+                                    emp.HiringDate,
+                                    emp.Email,
+                                    emp.PhoneNumber,
+                                    edu.Major,
+                                    edu.Degree,
+                                    edu.Gpa,
+                                    uni.Name
+                                };
+
+                    foreach (var emp in query)
+                    {
+                        Console.WriteLine($"NIK: {emp.Nik}");
+                        Console.WriteLine($"Full Name: {emp.FullName}");
+                        Console.WriteLine($"Birth Date: {emp.Birthdate}");
+                        Console.WriteLine($"Gender: {emp.Gender}");
+                        Console.WriteLine($"Hiring Date: {emp.HiringDate}");
+                        Console.WriteLine($"Email: {emp.Email}");
+                        Console.WriteLine($"Phone Number: {emp.PhoneNumber}");
+                        Console.WriteLine($"Major: {emp.Major}");
+                        Console.WriteLine($"Degree: {emp.Degree}");
+                        Console.WriteLine($"GPA: {emp.Gpa}");
+                        Console.WriteLine($"University Name: {emp.Name}");
+                        Console.WriteLine("-----------------------------------");
+                    }
+
                     break;
 
                 default:

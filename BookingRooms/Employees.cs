@@ -242,6 +242,7 @@ public class Employees
     public static List<Employees> GetEmployees()
     {
         var emp = new List<Employees>();
+        /*var educ = new List<Educations>();*/
         using SqlConnection connection = new SqlConnection(connectionString);
         try
         {
@@ -268,6 +269,17 @@ public class Employees
                     emplo.DepartmentId = reader.GetString(9);
 
                     emp.Add(emplo);
+
+                   /* var education = new Educations();
+                    education.Id = reader.GetInt32(0);
+                    education.Major = reader.GetString(1);
+                    education.Degree = reader.GetString(2);
+                    education.Gpa = reader.GetString(3);
+                    education.UniversityId = reader.GetInt32(4);
+
+                    educ.Add(education);*/
+
+
                 }
                 return emp;
             }
@@ -282,6 +294,58 @@ public class Employees
         }
         return new List<Employees>();
     }
+
+
+
+    /*public static List<Employees> GetAllEmployee()
+    {
+        var emp = new List<Employees>();
+        using SqlConnection connection = new SqlConnection(connectionString);
+        try
+        {
+            SqlCommand command = new SqlCommand();
+            command.Connection = connection;
+            command.CommandText = "@ select e.id, e.nik, e.first_name, e.last_name, e.birthdate, e.gender, e.hiring_date, e.email, e.phone_number, e.departement_id, m.major, m.degree, m.gpa, u.name from Employees e join Profillings p on e.id = p.employee_id join Educations m on m.id = p.education_id join Universities u on u.id = m.id";
+            connection.Open();
+
+            using SqlDataReader reader = command.ExecuteReader();
+            if (reader.HasRows)
+            {
+                while (reader.Read())
+                {
+                    var emplo = new Employees();
+                    emplo.Id = reader.GetGuid(0).ToString();
+                    emplo.Nik = reader.GetString(1);
+                    emplo.FirstName = reader.GetString(2);
+                    emplo.LastName = reader.GetString(3);
+                    emplo.Birthdate = reader.GetDateTime(4);
+                    emplo.Gender = reader.GetString(5);
+                    emplo.HiringDate = reader.GetDateTime(6);
+                    emplo.Email = reader.GetString(7);
+                    emplo.PhoneNumber = reader.GetString(8);
+                    emplo.DepartmentId = reader.GetString(9);
+                    emplo. = reader.GetString(9);
+                    emplo.DepartmentId = reader.GetString(9);
+                    emplo.DepartmentId = reader.GetString(9);
+                    emplo.DepartmentId = reader.GetString(9);
+
+                    emp.Add(emplo);
+                }
+                return emp;
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+        finally
+        {
+            connection.Close();
+        }
+        return new List<Employees>();
+    }*/
+
+
 }
 
 
