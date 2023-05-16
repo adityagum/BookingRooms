@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BookingRooms;
+namespace BookingRooms.Model;
 
 public class AccountRoles
 {

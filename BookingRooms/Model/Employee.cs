@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BookingRooms.Context;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -6,13 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BookingRooms;
+namespace BookingRooms.Model;
 
-public class Employees
+public class Employee
 {
-    private static readonly string connectionString =
-     "Data Source=ASUSVIVOBOOK\\SQLSERVER;Database=booking_rooms;Integrated Security=True;Connect Timeout=30;Encrypt=False;";
-
     public string Id { get; set; }
     public string Nik { get; set; }
     public string FirstName { get; set; }
@@ -25,10 +23,10 @@ public class Employees
     public string DepartmentId { get; set; }
 
     /* CREATE */
-    public static int InsertEmployee(Employees employees)
+    public int Insert(Employee employees)
     {
         int result = 0;
-        using var connection = new SqlConnection(connectionString);
+        using var connection = MyConnection.Get();
         connection.Open();
 
         SqlTransaction transaction = connection.BeginTransaction();
@@ -120,9 +118,9 @@ public class Employees
     }
 
     // Mengambil NIK pada employee, untuk nanti menyesuaikan dengan ID nya. Karena ID pada employee bertipe data GUID
-    public static string GetEmpId(string NIK)
+    public string GetEmpId(string NIK)
     {
-        using SqlConnection connection = new SqlConnection(connectionString);
+        using SqlConnection connection = MyConnection.Get();
         connection.Open();
 
         SqlCommand command = new SqlCommand("SELECT id FROM Employees WHERE nik=(@NIK)", connection);
@@ -141,7 +139,7 @@ public class Employees
 
     public static int GetUnivEduId(int choice)
     {
-        using var connection = new SqlConnection(connectionString);
+        using var connection = MyConnection.Get();
         connection.Open();
         if (choice == 1)
         {
@@ -165,10 +163,10 @@ public class Employees
     // Insert ALL
     public static void PrintOutEmployee()
     {
-        var employee = new Employees();
-        var profiling = new Profillings();
-        var education = new Educations();
-        var university = new Universities();
+        var employee = new Employee();
+        var profiling = new Profilling();
+        var education = new Education();
+        var university = new University();
 
         Console.Write("NIK : ");
         var niks = Console.ReadLine();
@@ -213,10 +211,10 @@ public class Employees
         Console.Write("University Name : ");
         university.Name = Console.ReadLine();
 
-        Universities.InsertUniv(university);
+        University.InsertUniv(university);
 
         education.UniversityId = GetUnivEduId(1);
-        Educations.InsertEduc(education);
+        Education.InsertEduc(education);
 
         var result = InsertEmployee(employee);
         if (result > 0)
@@ -228,22 +226,22 @@ public class Employees
             Console.WriteLine("INSERT Failed");
         }
 
-        Universities.InsertUniv(university);
+        University.InsertUniv(university);
         education.UniversityId = GetUnivEduId(1);
-        Educations.InsertEduc(education);
+        Education.InsertEduc(education);
 
         profiling.EmployeeId = GetEmpId(niks);
         profiling.EducationId = GetUnivEduId(2);
-        Profillings.InsertProfiling(profiling);
+        Profilling.InsertProfiling(profiling);
 
     }
 
     /* READ*/
-    public static List<Employees> GetEmployees()
+    public List<Employee> GetEmployees()
     {
-        var emp = new List<Employees>();
+        var emp = new List<Employee>();
         /*var educ = new List<Educations>();*/
-        using SqlConnection connection = new SqlConnection(connectionString);
+        using SqlConnection connection = MyConnection.Get();
         try
         {
             SqlCommand command = new SqlCommand();
@@ -256,7 +254,7 @@ public class Employees
             {
                 while (reader.Read())
                 {
-                    var emplo = new Employees();
+                    var emplo = new Employee();
                     emplo.Id = reader.GetGuid(0).ToString();
                     emplo.Nik = reader.GetString(1);
                     emplo.FirstName = reader.GetString(2);
@@ -270,14 +268,14 @@ public class Employees
 
                     emp.Add(emplo);
 
-                   /* var education = new Educations();
-                    education.Id = reader.GetInt32(0);
-                    education.Major = reader.GetString(1);
-                    education.Degree = reader.GetString(2);
-                    education.Gpa = reader.GetString(3);
-                    education.UniversityId = reader.GetInt32(4);
+                    /* var education = new Educations();
+                     education.Id = reader.GetInt32(0);
+                     education.Major = reader.GetString(1);
+                     education.Degree = reader.GetString(2);
+                     education.Gpa = reader.GetString(3);
+                     education.UniversityId = reader.GetInt32(4);
 
-                    educ.Add(education);*/
+                     educ.Add(education);*/
 
 
                 }
@@ -292,7 +290,7 @@ public class Employees
         {
             connection.Close();
         }
-        return new List<Employees>();
+        return new List<Employee>();
     }
 
 
@@ -352,5 +350,5 @@ public class Employees
 
 
 
-   
+
 

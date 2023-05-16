@@ -5,25 +5,21 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BookingRooms.Context;
 
-namespace BookingRooms;
+namespace BookingRooms.Model;
 
-public class Universities
+public class University
 {
-    
+
     public int Id { get; set; }
     public string Name { get; set; }
 
-/*    Connection SQL Server*/
-
-    private static readonly string connectionString =
-        "Data Source=ASUSVIVOBOOK\\SQLSERVER; Database=booking_rooms; Integrated Security=True;Connect Timeout=30;Encrypt=False;";
-
     /*CREATE*/
-    public static int InsertUniv(Universities universities)
+    public int Insert(University universities)
     {
         int result = 0;
-        using var connection = new SqlConnection(connectionString);
+        using var connection = MyConnection.Get();
         connection.Open();
 
         SqlTransaction transaction = connection.BeginTransaction();
@@ -59,10 +55,10 @@ public class Universities
     }
 
     /*READ*/
-    public static List<Universities> GetUniv()
+    public List<University> Get()
     {
-        var universities = new List<Universities>();
-        using SqlConnection connection = new SqlConnection(connectionString);
+        var universities = new List<University>();
+        using SqlConnection connection = MyConnection.Get();
         try
         {
             SqlCommand command = new SqlCommand();
@@ -75,7 +71,7 @@ public class Universities
             {
                 while (reader.Read())
                 {
-                    var university = new Universities();
+                    var university = new University();
                     university.Id = reader.GetInt32(0);
                     university.Name = reader.GetString(1);
 
@@ -92,14 +88,14 @@ public class Universities
         {
             connection.Close();
         }
-        return new List<Universities>();
+        return new List<University>();
     }
 
     /*UPDATE*/
-    public static int UpdateUniversity(Universities university)
+    public int Update(University university)
     {
         int result = 0;
-        using var connection = new SqlConnection(connectionString);
+        using var connection = MyConnection.Get();
         connection.Open();
 
         SqlTransaction transaction = connection.BeginTransaction();
@@ -138,10 +134,10 @@ public class Universities
     }
 
     /*DELETE*/
-    public static int DeleteUniversity(Universities university)
+    public int Delete(University university)
     {
         int result = 0;
-        using var connection = new SqlConnection(connectionString);
+        using var connection = MyConnection.Get();
         connection.Open();
 
         SqlTransaction transaction = connection.BeginTransaction();
@@ -172,5 +168,20 @@ public class Universities
         }
         return result;
     }
+
+    public int GetUniv(int choice)
+    {
+        using var connection = MyConnection.Get();
+        connection.Open();
+        {
+            SqlCommand command = new SqlCommand("SELECT TOP 1 id FROM Universities ORDER BY id DESC", connection);
+
+            int id = Convert.ToInt32(command.ExecuteScalar());
+            connection.Close();
+
+            return id;
+        }
+    }
 }
+
 

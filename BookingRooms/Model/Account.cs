@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BookingRooms;
+namespace BookingRooms.Model;
 
-public class Accounts
+public class Account
 {
     public string EmployeeId { get; set; }
     public string Password { get; set; }

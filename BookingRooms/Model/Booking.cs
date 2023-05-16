@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BookingRooms;
+namespace BookingRooms.Model;
 
-public class Bookings
+public class Booking
 {
     public string Id { get; set; }
     public DateTime StartDate { get; set; }

@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BookingRooms;
+namespace BookingRooms.Model;
 
-public class Departements
+public class Role
 {
     public string Id { get; set; }
-    public string Name { get; set; } 
+    public string Name { get; set; }
 }

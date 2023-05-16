@@ -1,26 +1,26 @@
-﻿using System;
+﻿using BookingRooms.Context;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BookingRooms;
+namespace BookingRooms.Model;
 
-public class Profillings
+public class Profilling
 {
     public string EmployeeId { get; set; }
     public int EducationId { get; set; }
 
-    private static readonly string connectionString =
-     "Data Source=ASUSVIVOBOOK\\SQLSERVER; Database = booking_rooms; Integrated Security=True;Connect Timeout=30;Encrypt=False;";
-    public static int InsertProfiling(Profillings profilings)
+    public int Insert(Profilling profilings)
     {
         int result = 0;
-        using var connection = new SqlConnection(connectionString);
+        using var connection = MyConnection.Get();
         connection.Open();
-        var employee = new Employees();
-        var education = new Educations();
+
+        var employee = new Employee();
+        var education = new Education();
 
         SqlTransaction transaction = connection.BeginTransaction();
         try
@@ -59,11 +59,11 @@ public class Profillings
 
 
 
-/*READ*/
-    public static List<Profillings> GetProfilings()
+    /*READ*/
+    public List<Profilling> Get()
     {
-        var pro = new List<Profillings>();
-        using SqlConnection connection = new SqlConnection(connectionString);
+        var pro = new List<Profilling>();
+        using SqlConnection connection = MyConnection.Get();
         try
         {
             SqlCommand command = new SqlCommand();
@@ -76,7 +76,7 @@ public class Profillings
             {
                 while (reader.Read())
                 {
-                    var prof = new Profillings();
+                    var prof = new Profilling();
                     prof.EmployeeId = reader.GetGuid(0).ToString();
                     prof.EducationId = reader.GetInt32(1);
 
@@ -93,6 +93,6 @@ public class Profillings
         {
             connection.Close();
         }
-        return new List<Profillings>();
+        return new List<Profilling>();
     }
 }

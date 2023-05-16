@@ -5,10 +5,11 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BookingRooms.Context;
 
-namespace BookingRooms;
+namespace BookingRooms.Model;
 
-public class Educations
+public class Education
 {
     public int Id { get; set; }
     public string Major { get; set; }
@@ -16,14 +17,12 @@ public class Educations
     public string Gpa { get; set; }
     public int UniversityId { get; set; }
 
-    private static readonly string connectionString =
-        "Data Source=ASUSVIVOBOOK\\SQLSERVER; Database=booking_rooms; Integrated Security=True;Connect Timeout=30;Encrypt=False;";
-
+   
     /*CREATE*/
-    public static int InsertEduc(Educations educations)
+    public int Insert(Education educations)
     {
         int result = 0;
-        using var connection = new SqlConnection(connectionString);
+        using var connection = MyConnection.Get();
         connection.Open();
 
         SqlTransaction transaction = connection.BeginTransaction();
@@ -79,10 +78,10 @@ public class Educations
     }
 
     /*READ*/
-    public static List<Educations> GetEducation()
+    public List<Education> Get()
     {
-        var educations = new List<Educations>();
-        using SqlConnection connection = new SqlConnection(connectionString);
+        var educations = new List<Education>();
+        using SqlConnection connection = MyConnection.Get();
         try
         {
             SqlCommand command = new SqlCommand();
@@ -95,7 +94,7 @@ public class Educations
             {
                 while (reader.Read())
                 {
-                    var education = new Educations();
+                    var education = new Education();
                     education.Id = reader.GetInt32(0);
                     education.Major = reader.GetString(1);
                     education.Degree = reader.GetString(2);
@@ -115,15 +114,15 @@ public class Educations
         {
             connection.Close();
         }
-        return new List<Educations>();
+        return new List<Education>();
     }
 
 
     /*UPDATE*/
-    public static int UpdateEducation(Educations education)
+    public int Update(Education education)
     {
         int result = 0;
-        using var connection = new SqlConnection(connectionString);
+        using var connection = MyConnection.Get();
         connection.Open();
 
         SqlTransaction transaction = connection.BeginTransaction();
@@ -177,10 +176,10 @@ public class Educations
     }
 
     /*DELETE*/
-    public static int DeleteEducation(Educations educations)
+    public int Delete(Education educations)
     {
         int result = 0;
-        using var connection = new SqlConnection(connectionString);
+        using var connection = MyConnection.Get();
         connection.Open();
 
         SqlTransaction transaction = connection.BeginTransaction();
@@ -210,6 +209,18 @@ public class Educations
             connection.Close();
         }
         return result;
+    }
+
+    public int GetEduId(int choice)
+    {
+        using var connection = MyConnection.Get();
+        connection.Open();
+        SqlCommand command = new SqlCommand("SELECT TOP 1 id FROM Educations ORDER BY id DESC", connection);
+
+        int id = Convert.ToInt32(command.ExecuteScalar());
+        connection.Close();
+
+        return id;
     }
 
 }
