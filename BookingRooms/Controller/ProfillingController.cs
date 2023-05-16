@@ -1,4 +1,5 @@
 ﻿using BookingRooms.Model;
+using BookingRooms.View;
 using BookingRooms.VIew;
 using System;
 using System.Collections.Generic;
@@ -16,7 +17,7 @@ public class ProfillingController
     {
         Console.WriteLine("Menampilkan semua data");
         var result = _profilling.Get();
-        var view = new EmployeeView();
+        var view = new ProfillingsView();
         if (result.Count == 0)
         {
             view.Output("Data Hilang");
@@ -24,6 +25,20 @@ public class ProfillingController
         else
         {
             view.Output(result);
+        }
+    }
+
+    public static void Insert(Profilling profilings)
+    {
+        var result = _profilling.Insert(profilings);
+        var view = new ProfillingsView();
+        if (result == 0)
+        {
+            view.Output("Insert Profiling Failed");
+        }
+        else
+        {
+            view.Output("Insert Profiling Success");
         }
     }
 }

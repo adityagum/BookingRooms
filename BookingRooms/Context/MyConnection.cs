@@ -15,7 +15,7 @@ namespace BookingRooms.Context
         public static SqlConnection Get()
         {
             var connection = new SqlConnection(connectionString);
-            try
+            /*try
             {
                 connection.Open();
                 Console.WriteLine("Connection Open!");
@@ -30,7 +30,7 @@ namespace BookingRooms.Context
             {
                 connection.Close();
             }
-            return connection;
+            return connection;*/
 
             return new SqlConnection(connectionString);
         }

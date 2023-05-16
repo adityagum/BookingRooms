@@ -15,39 +15,23 @@ public class EducationController
     public static void GetAll()
     {
         Console.WriteLine("Menampilkan semua data");
-        var result = _education.Get();
-        var view = new EmployeeView();
-        if (result.Count == 0)
+        var results = _education.Get();
+        var view = new EducationView();
+        if (results.Count == 0)
         {
             view.Output("Data Hilang");
         }
         else
         {
-            view.Output(result);
+            view.Output(results);
         }
     }
 
-    public void Insert(Education education)
+    public static void Insert(Education education)
     {
-        
-        Console.Write("Masukkan Major : ");
-        var major = Console.ReadLine();
-        education.Major = major;
-
-        Console.Write("Masukkan Degree : ");
-        var degree = Console.ReadLine();
-        education.Degree = degree;
-
-        Console.Write("Masukkan GPA : ");
-        var gpa = Console.ReadLine();
-        education.Gpa = gpa;
-
-        Console.Write("University ID : ");
-        var university_id = Convert.ToInt32(Console.ReadLine());
-        education.UniversityId = university_id;
-
-        var result = _education.Insert(education);
-        if (result > 0)
+        var results = _education.Update(education);
+        var view = new EducationView();
+        if (results > 0)
         {
             Console.WriteLine("Insert success.");
         }
@@ -57,27 +41,11 @@ public class EducationController
         }
     }
 
-    public void Update(Education education)
+    public static void Update(Education education)
     {
-        Console.Write("Masukkan Education ID : ");
-        int id = Convert.ToInt32(Console.ReadLine());
-        Console.Write("Major: ");
-        string major = Console.ReadLine();
-        Console.Write("Degree: ");
-        string degree = Console.ReadLine();
-        Console.Write("GPA: ");
-        string gpa = Console.ReadLine();
-        Console.Write("Universty Id : ");
-        int univ_id = Convert.ToInt32(Console.ReadLine());
-
-        education.Id = id;
-        education.Major = major;
-        education.Degree = degree;
-        education.Gpa = gpa;
-        education.UniversityId = univ_id;
-
-        var results = _education.Update(education);
-        if (results > 0)
+        var result = _education.Update(education);
+        var view = new EducationView();
+        if (result > 0)
         {
             Console.WriteLine("Update success");
         }
@@ -87,13 +55,11 @@ public class EducationController
         }
     }
 
-    public void Delete(Education education)
+    public static void Delete(Education education)
     {
         Console.Write("Masukkan ID Educations : ");
-        int id = Convert.ToInt32(Console.ReadLine());
-        education.Id = id;
-
-        var result = _education.Update(education);
+        var result = _education.Delete(education);
+        var view = new EducationView();
         if (result > 0)
         {
             Console.WriteLine("Delete success");
@@ -103,4 +69,20 @@ public class EducationController
             Console.WriteLine("Delete Failed");
         }
     }
+
+    public static void LinqGender()
+    {
+        var educ = _education.Get();
+        var gen = educ.Where(e => e.Degree == "S2");
+        var view = new EducationView();
+        if (educ.Count == 0)
+        {
+            view.Output("Data Tidak Ditemukan");
+        }
+        else
+        {
+            view.Output(educ);
+        }
+    }
+
 }

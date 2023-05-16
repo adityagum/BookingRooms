@@ -136,111 +136,9 @@ public class Employee
         return lastEmpId;
     }
 
-
-    public static int GetUnivEduId(int choice)
-    {
-        using var connection = MyConnection.Get();
-        connection.Open();
-        if (choice == 1)
-        {
-            SqlCommand command = new SqlCommand("SELECT TOP 1 id FROM Universities ORDER BY id DESC", connection);
-
-            int id = Convert.ToInt32(command.ExecuteScalar());
-            connection.Close();
-
-            return id;
-        }
-        else
-        {
-            SqlCommand command = new SqlCommand("SELECT TOP 1 id FROM Educations ORDER BY id DESC", connection);
-
-            int id = Convert.ToInt32(command.ExecuteScalar());
-            connection.Close();
-
-            return id;
-        }
-    }
-    // Insert ALL
-    public static void PrintOutEmployee()
-    {
-        var employee = new Employee();
-        var profiling = new Profilling();
-        var education = new Education();
-        var university = new University();
-
-        Console.Write("NIK : ");
-        var niks = Console.ReadLine();
-        employee.Nik = niks;
-
-        Console.Write("First Name : ");
-        employee.FirstName = Console.ReadLine();
-
-        Console.Write("Lame Name : ");
-        employee.LastName = Console.ReadLine();
-
-        Console.Write("Birthdate : ");
-        employee.Birthdate = DateTime.Parse(Console.ReadLine());
-
-        Console.Write("Gender : ");
-        employee.Gender = Console.ReadLine();
-
-        Console.Write("Hiring Date : ");
-        employee.HiringDate = DateTime.Parse(Console.ReadLine());
-
-        Console.Write("Email : ");
-        employee.Email = Console.ReadLine();
-
-        Console.Write("Phone Number : ");
-        employee.PhoneNumber = Console.ReadLine();
-
-        Console.Write("Department ID : ");
-        employee.DepartmentId = Console.ReadLine();
-
-
-
-        //EDUCATION
-        Console.Write("Major : ");
-        education.Major = Console.ReadLine();
-
-        Console.Write("Degree : ");
-        education.Degree = Console.ReadLine();
-
-        Console.Write("GPA : ");
-        education.Gpa = Console.ReadLine();
-
-        Console.Write("University Name : ");
-        university.Name = Console.ReadLine();
-
-        University.InsertUniv(university);
-
-        education.UniversityId = GetUnivEduId(1);
-        Education.InsertEduc(education);
-
-        var result = InsertEmployee(employee);
-        if (result > 0)
-        {
-            Console.WriteLine("INSERT Success");
-        }
-        else
-        {
-            Console.WriteLine("INSERT Failed");
-        }
-
-        University.InsertUniv(university);
-        education.UniversityId = GetUnivEduId(1);
-        Education.InsertEduc(education);
-
-        profiling.EmployeeId = GetEmpId(niks);
-        profiling.EducationId = GetUnivEduId(2);
-        Profilling.InsertProfiling(profiling);
-
-    }
-
-    /* READ*/
-    public List<Employee> GetEmployees()
+    public List<Employee> Get()
     {
         var emp = new List<Employee>();
-        /*var educ = new List<Educations>();*/
         using SqlConnection connection = MyConnection.Get();
         try
         {
@@ -267,17 +165,6 @@ public class Employee
                     emplo.DepartmentId = reader.GetString(9);
 
                     emp.Add(emplo);
-
-                    /* var education = new Educations();
-                     education.Id = reader.GetInt32(0);
-                     education.Major = reader.GetString(1);
-                     education.Degree = reader.GetString(2);
-                     education.Gpa = reader.GetString(3);
-                     education.UniversityId = reader.GetInt32(4);
-
-                     educ.Add(education);*/
-
-
                 }
                 return emp;
             }
@@ -292,63 +179,4 @@ public class Employee
         }
         return new List<Employee>();
     }
-
-
-
-    /*public static List<Employees> GetAllEmployee()
-    {
-        var emp = new List<Employees>();
-        using SqlConnection connection = new SqlConnection(connectionString);
-        try
-        {
-            SqlCommand command = new SqlCommand();
-            command.Connection = connection;
-            command.CommandText = "@ select e.id, e.nik, e.first_name, e.last_name, e.birthdate, e.gender, e.hiring_date, e.email, e.phone_number, e.departement_id, m.major, m.degree, m.gpa, u.name from Employees e join Profillings p on e.id = p.employee_id join Educations m on m.id = p.education_id join Universities u on u.id = m.id";
-            connection.Open();
-
-            using SqlDataReader reader = command.ExecuteReader();
-            if (reader.HasRows)
-            {
-                while (reader.Read())
-                {
-                    var emplo = new Employees();
-                    emplo.Id = reader.GetGuid(0).ToString();
-                    emplo.Nik = reader.GetString(1);
-                    emplo.FirstName = reader.GetString(2);
-                    emplo.LastName = reader.GetString(3);
-                    emplo.Birthdate = reader.GetDateTime(4);
-                    emplo.Gender = reader.GetString(5);
-                    emplo.HiringDate = reader.GetDateTime(6);
-                    emplo.Email = reader.GetString(7);
-                    emplo.PhoneNumber = reader.GetString(8);
-                    emplo.DepartmentId = reader.GetString(9);
-                    emplo. = reader.GetString(9);
-                    emplo.DepartmentId = reader.GetString(9);
-                    emplo.DepartmentId = reader.GetString(9);
-                    emplo.DepartmentId = reader.GetString(9);
-
-                    emp.Add(emplo);
-                }
-                return emp;
-            }
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine(ex.Message);
-        }
-        finally
-        {
-            connection.Close();
-        }
-        return new List<Employees>();
-    }*/
-
-
 }
-
-
-
-
-
-
-

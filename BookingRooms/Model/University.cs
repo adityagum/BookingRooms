@@ -20,7 +20,7 @@ public class University
     {
         int result = 0;
         using var connection = MyConnection.Get();
-        connection.Open();
+        /*connection.Open();*/
 
         SqlTransaction transaction = connection.BeginTransaction();
         try
@@ -169,7 +169,7 @@ public class University
         return result;
     }
 
-    public int GetUniv(int choice)
+    public int GetUnivById()
     {
         using var connection = MyConnection.Get();
         connection.Open();

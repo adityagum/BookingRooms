@@ -10,67 +10,70 @@ namespace BookingRooms.View
     {
         public static void GetAllMenu()
         {
-            Console.WriteLine("=============================");
-            Console.WriteLine("=           MENU            =");
-            Console.WriteLine("=============================");
-            Console.WriteLine("=                           =");
-            Console.WriteLine("=        1. Create          =");
-            Console.WriteLine("=        2. Read            =");
-            Console.WriteLine("=        3. Update          =");
-            Console.WriteLine("=        4. Delete          =");
-            Console.WriteLine("=        5. Testing         =");
-            Console.WriteLine("=        6. LINQ            =");
-            Console.WriteLine("=                           =");
-            Console.WriteLine("=============================");
-            Console.WriteLine("Pilih menu (1/2/3/4/5): ");
+            Console.WriteLine("____________________________");
+            Console.WriteLine("|           MENU           |");
+            Console.WriteLine("----------------------------");
+            Console.WriteLine("|        1. Create         |");
+            Console.WriteLine("|        2. Read           |");
+            Console.WriteLine("|        3. Update         |");
+            Console.WriteLine("|        4. Delete         |");
+            Console.WriteLine("|        5. Show Male      |");
+            Console.WriteLine("|        6. LINQ           |");
+            Console.WriteLine("|        7. Exit           |");
+            Console.WriteLine("----------------------------");
+            Console.WriteLine("Choose Menu: ");
         }
 
         public static void Insert()
         {
-            Console.WriteLine("===== INGIN MELAKUKAN INSERT PADA TABEL =====");
-            Console.WriteLine("=====                                   =====");
-            Console.WriteLine("=====      1. Universities              =====");
-            Console.WriteLine("=====      2. Educations                =====");
-            Console.WriteLine("=====      3. Employees (Insert All)    =====");
-            Console.WriteLine("=====      4. Back                      =====");
-            Console.WriteLine("=====      5. Testing                   =====");
-            Console.WriteLine("=====                                   =====");
-            Console.WriteLine("Pilih menu (1/2/3/4): ");
+            Console.WriteLine("_____________________________");
+            Console.WriteLine("|    Input Data to table    |");
+            Console.WriteLine("-----------------------------");
+            Console.WriteLine("|      1. University        |");
+            Console.WriteLine("|      2. Education         |");
+            Console.WriteLine("|      3. Employee          |");
+            Console.WriteLine("|      4. Back to Menu      |");
+            Console.WriteLine("-----------------------------");
+            Console.WriteLine("Pilih menu: ");
         }
 
         public static void Read()
         {
-            Console.WriteLine("=====          Tampilkan Tabel          =====");
-            Console.WriteLine("=====                                   =====");
-            Console.WriteLine("=====      1. Universities              =====");
-            Console.WriteLine("=====      2. Educations                =====");
-            Console.WriteLine("=====      3. Employees (Insert All)    =====");
-            Console.WriteLine("=====      4. Back                      =====");
-            Console.WriteLine("=====      5. Testing                   =====");
-            Console.WriteLine("=====                                   =====");
-            Console.WriteLine("Pilih menu (1/2/3/4): ");
+            Console.WriteLine("_____________________________");
+            Console.WriteLine("|       Display Table       |");
+            Console.WriteLine("-----------------------------");
+            Console.WriteLine("|      1. University        |");
+            Console.WriteLine("|      2. Education         |");
+            Console.WriteLine("|      3. Employee          |");
+            Console.WriteLine("|      4. Profillings       |");
+            Console.WriteLine("|      5. Back to Menu      |");
+            Console.WriteLine("-----------------------------");
+            Console.WriteLine("Pilih menu: ");
+
         }
 
         public static void Update()
         {
-            Console.WriteLine("===== PILIH TABEL YANG AKAN DIUBAH =====");
-            Console.WriteLine("=====                              =====");
-            Console.WriteLine("=====        1. Universities       =====");
-            Console.WriteLine("=====        2. Educations         =====");
-            Console.WriteLine("=====        3. Back               =====");
-            Console.WriteLine("=====                              =====");
-            Console.WriteLine("Pilih menu (1/2): ");
+            Console.WriteLine("_____________________________");
+            Console.WriteLine("|        Update Table       |");
+            Console.WriteLine("-----------------------------");
+            Console.WriteLine("|      1. University        |");
+            Console.WriteLine("|      2. Education         |");
+            Console.WriteLine("|      3. Back              |");
+            Console.WriteLine("-----------------------------");
+            Console.WriteLine("Pilih menu: ");
         }
 
         public static void Delete()
         {
-            Console.WriteLine("===== PILIH TABEL YANG AKAN DIHAPUS =====");
-            Console.WriteLine("=====                               =====");
-            Console.WriteLine("=====        1. Universities        =====");
-            Console.WriteLine("=====        2. Educations          =====");
-            Console.WriteLine("=====        3. Back                =====");
-            Console.WriteLine("=====                               =====");
-            Console.WriteLine("Pilih menu (1/2): ");
+            Console.WriteLine("_____________________________");
+            Console.WriteLine("|        Delete Table       |");
+            Console.WriteLine("-----------------------------");
+            Console.WriteLine("|      1. University        |");
+            Console.WriteLine("|      2. Education         |");
+            Console.WriteLine("|      3. Back              |");
+            Console.WriteLine("-----------------------------");
+            Console.WriteLine("Pilih menu: ");
         }
     }
 }

@@ -211,7 +211,7 @@ public class Education
         return result;
     }
 
-    public int GetEduId(int choice)
+    public int GetEduId()
     {
         using var connection = MyConnection.Get();
         connection.Open();

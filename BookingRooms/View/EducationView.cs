@@ -21,5 +21,19 @@ namespace BookingRooms.VIew
             Console.WriteLine("Universty Id : " + education.UniversityId);
             Console.WriteLine("-----------------------------------------");
         }
+
+        public void Output(List<Education> educations)
+        {
+            foreach (var education in educations)
+            {
+                Output(education);
+            }
+        }
+
+        public void Output(string message)
+        {
+            Console.WriteLine(message);
+        }
+
     }
 }
