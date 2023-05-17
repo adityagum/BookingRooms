@@ -5,6 +5,7 @@ using System;
 using BookingRooms.Model;
 using BookingRooms.View;
 using BookingRooms.Controller;
+using BookingRooms.VIew;
 
 public class Program
 {
@@ -52,7 +53,7 @@ public class Program
                     break;
 
                 case 5:
-                    EmployeeController.LinqGender();
+                    LinqdepartId();
                     break;
 
                 case 6:
@@ -69,6 +70,11 @@ public class Program
             }
 
         } while (choice != 8);
+    }
+
+    public static void LinqdepartId()
+    {
+        employeeController.LinqDeptId();
     }
 }
 

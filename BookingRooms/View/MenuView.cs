@@ -10,18 +10,18 @@ namespace BookingRooms.View
     {
         public static void GetAllMenu()
         {
-            Console.WriteLine("____________________________");
-            Console.WriteLine("|           MENU           |");
-            Console.WriteLine("----------------------------");
-            Console.WriteLine("|        1. Create         |");
-            Console.WriteLine("|        2. Read           |");
-            Console.WriteLine("|        3. Update         |");
-            Console.WriteLine("|        4. Delete         |");
-            Console.WriteLine("|        5. Show Male      |");
-            Console.WriteLine("|        6. LINQ           |");
-            Console.WriteLine("|        7. Insert All     |");
-            Console.WriteLine("|        8. Exit           |");
-            Console.WriteLine("----------------------------");
+            Console.WriteLine("__________________________________");
+            Console.WriteLine("|               MENU             |");
+            Console.WriteLine("----------------------------------");
+            Console.WriteLine("|        1. Create               |");
+            Console.WriteLine("|        2. Read                 |");
+            Console.WriteLine("|        3. Update               |");
+            Console.WriteLine("|        4. Delete               |");
+            Console.WriteLine("|        5. Get DeptID 1115      |");
+            Console.WriteLine("|        6. LINQ                 |");
+            Console.WriteLine("|        7. Insert All           |");
+            Console.WriteLine("|        8. Exit                 |");
+            Console.WriteLine("----------------------------------");
             Console.WriteLine("Choose Menu: ");
         }
 

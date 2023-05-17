@@ -38,5 +38,25 @@ namespace BookingRooms.VIew
         {
             Console.WriteLine(message);
         }
+
+        public void Output(IEnumerable<Employee> employees)
+        {
+            foreach (var employee in employees)
+            {
+                // Output/display the employee details as desired
+                Console.WriteLine("Id: " + employee.Id);
+                Console.WriteLine("Nik: " + employee.Nik);
+                Console.WriteLine("FirstName: " + employee.FirstName);
+                Console.WriteLine("LastName: " + employee.LastName);
+                Console.WriteLine("BirthDate: " + employee.Birthdate);
+                Console.WriteLine("Gender: " + employee.Gender);
+                Console.WriteLine("HiringDate: " + employee.HiringDate);
+                Console.WriteLine("Email: " + employee.Email);
+                Console.WriteLine("PhoneNumber: " + employee.PhoneNumber);
+                Console.WriteLine("DepartementId: " + employee.DepartmentId);
+                Console.WriteLine("-----------------------------------");
+                Console.WriteLine("");
+            }
+        }
     }
 }

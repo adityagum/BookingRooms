@@ -41,18 +41,18 @@ public class EmployeeController
         }
     }
 
-    public static void LinqGender()
+    public void LinqDeptId()
     {
         var emp = _employee.Get();
         var gen = emp.Where(e => e.DepartmentId == "1115");
         var view = new EmployeeView();
-        if (emp.Count == 0)
+        if (gen.Count() > 0)
         {
-            view.Output("Data Not Found");
+            view.Output(gen);
         }
         else
         {
-            view.Output(emp);
+            view.Output("Data Not Found");
         }
     }
 
